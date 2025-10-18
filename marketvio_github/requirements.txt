@@ -1,0 +1,1 @@
+Flask==2.2.5\npython-telegram-bot==20.6\npython-dotenv==1.0.0\nrequests==2.31.0\nWerkzeug==2.2.3\n

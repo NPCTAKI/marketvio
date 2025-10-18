@@ -1,0 +1,114 @@
+{
+  "UC_Prices": [
+    {
+      "uc": 30,
+      "old_price": 6000,
+      "new_price": 5650
+    },
+    {
+      "uc": 60,
+      "old_price": 12000,
+      "new_price": 10978
+    },
+    {
+      "uc": 325,
+      "old_price": 56000,
+      "new_price": 54897
+    },
+    {
+      "uc": 355,
+      "old_price": 62000,
+      "new_price": 60986
+    },
+    {
+      "uc": 385,
+      "old_price": 68000,
+      "new_price": 66997
+    },
+    {
+      "uc": 415,
+      "old_price": 73000,
+      "new_price": 71746
+    },
+    {
+      "uc": 535,
+      "old_price": 97000,
+      "new_price": 94677
+    },
+    {
+      "uc": 660,
+      "old_price": 111000,
+      "new_price": 109895
+    },
+    {
+      "uc": 720,
+      "old_price": 123000,
+      "new_price": 121889
+    },
+    {
+      "uc": 840,
+      "old_price": 146000,
+      "new_price": 144660
+    },
+    {
+      "uc": 900,
+      "old_price": 156000,
+      "new_price": 154679
+    },
+    {
+      "uc": 985,
+      "old_price": 166000,
+      "new_price": 164592
+    },
+    {
+      "uc": 1320,
+      "old_price": 222000,
+      "new_price": 221456
+    },
+    {
+      "uc": 1800,
+      "old_price": 282000,
+      "new_price": 278964
+    },
+    {
+      "uc": 2125,
+      "old_price": 339000,
+      "new_price": 334769
+    },
+    {
+      "uc": 2450,
+      "old_price": 395000,
+      "new_price": 392887
+    },
+    {
+      "uc": 2775,
+      "old_price": 449000,
+      "new_price": 446345
+    },
+    {
+      "uc": 3100,
+      "old_price": 505000,
+      "new_price": 503779
+    },
+    {
+      "uc": 3850,
+      "old_price": 553000,
+      "new_price": 544699
+    },
+    {
+      "uc": 5650,
+      "old_price": 839000,
+      "new_price": 829560
+    },
+    {
+      "uc": 8100,
+      "old_price": 1120000,
+      "new_price": 1088998
+    },
+    {
+      "uc": 16200,
+      "old_price": 2209000,
+      "new_price": 2186923
+    }
+  ]
+}
