@@ -1,1 +1,1 @@
-# config.py - Marketvio configuration\nBOT_TOKEN = "8241931488:AAFS9piPgg4fHGfF7_weQeNTR40t1prZXX0"\nADMIN_CHAT_ID = 6480217249\nWEBAPP_ORIGIN = "https://your-deployed-domain.com"\nHOST = "0.0.0.0"\nPORT = 8080\n
+# config.py - Marketvio configuration\nBOT_TOKEN = "8241931488:AAFS9piPgg4fHGfF7_weQeNTR40t1prZXX0"\nADMIN_CHAT_ID = 6480217249\nWEBAPP_ORIGIN = "https://marketvio.onrender.com"\nHOST = "0.0.0.0"\nPORT = 8080\n
