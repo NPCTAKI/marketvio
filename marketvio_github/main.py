@@ -1,77 +1,76 @@
 import os
 import threading
 import logging
+import asyncio
 from flask import Flask
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
     MessageHandler,
-    filters,
-    ContextTypes
+    ContextTypes,
+    filters
 )
 
-# ==============================
-# 🔧 Basic Setup
-# ==============================
+# ===========================
+# 🔧 Basic setup
+# ===========================
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
-TOKEN = os.getenv("BOT_TOKEN")  # Set in Render → Environment → BOT_TOKEN
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+WEBAPP_ORIGIN = os.getenv("WEBAPP_ORIGIN", "https://marketvio.onrender.com")
+HOST = "0.0.0.0"
+PORT = int(os.getenv("PORT", 8080))
 
-# Flask web server
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Bot is running!"
+    return "✅ Marketvio Mini App is running!"
 
-def run_flask():
-    app.run(host="0.0.0.0", port=8080)
 
-# ==============================
-# 🤖 Telegram Bot Handlers
-# ==============================
+# ===========================
+# 🤖 Telegram bot handlers
+# ===========================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Hello 👋! I'm your UC service bot.")
+    await update.message.reply_text("👋 Hello! Marketvio mini app is active!")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Available commands:\n/start - start the bot\n/help - show this message")
+    await update.message.reply_text("/start - welcome\n/help - command list")
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f"You said: {update.message.text}")
 
-# ==============================
-# 🚀 Main Runner
-# ==============================
-async def main():
-    if not TOKEN:
-        logger.error("❌ BOT_TOKEN environment variable is missing.")
+
+# ===========================
+# 🚀 Main function
+# ===========================
+async def run_bot():
+    if not BOT_TOKEN:
+        logger.error("❌ BOT_TOKEN is missing in environment variables.")
         return
 
-    logger.info("Initializing bot...")
-    application = ApplicationBuilder().token(TOKEN).build()
+    logger.info("Starting Telegram bot...")
+    app_builder = ApplicationBuilder().token(BOT_TOKEN).build()
 
-    # Handlers
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("help", help_command))
-    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    app_builder.add_handler(CommandHandler("start", start))
+    app_builder.add_handler(CommandHandler("help", help_command))
+    app_builder.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
 
-    # Run Flask in background thread
-    logger.info("Starting Flask + Telegram bot...")
-    t = threading.Thread(target=run_flask, daemon=True)
-    t.start()
-    # Keep bot running
-    logger.info("Bot polling started...")
-    await application.run_polling()
+    await app_builder.run_polling(close_loop=False)
+
+
+def run_flask():
+    app.run(host=HOST, port=PORT)
+
 
 if __name__ == "__main__":
-    import asyncio
+    # Run Flask in background
+    threading.Thread(target=run_flask, daemon=True).start()
 
-    # ✅ Run the async main()
-    asyncio.run(main())
-
-
+    # Run Telegram bot (async)
+    asyncio.run(run_bot())
