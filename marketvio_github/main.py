@@ -64,5 +64,14 @@ async def main():
     logger.info("Starting Flask + Telegram bot...")
     t = threading.Thread(target=run_flask, daemon=True)
     t.start()
+    # Keep bot running
+    logger.info("Bot polling started...")
+    await application.run_polling()
+
+if __name__ == "__main__":
+    import asyncio
+
+    # ✅ Run the async main()
+    asyncio.run(main())
 
 
