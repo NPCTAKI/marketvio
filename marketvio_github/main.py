@@ -65,12 +65,4 @@ async def main():
     t = threading.Thread(target=run_flask, daemon=True)
     t.start()
 
-    # Run the bot forever
-    await application.run_polling()
 
-# ==============================
-# 🔁 Entry Point
-# ==============================
-if __name__ == "__main__":
-    import asyncio
-    asyncio.run(main())
